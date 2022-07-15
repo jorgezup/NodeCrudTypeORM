@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import {Category} from "../entities/Category";
+import {Video} from "../entities/Video";
 
 const myDataSource = new DataSource({
     type: "postgres",
@@ -8,7 +9,7 @@ const myDataSource = new DataSource({
     username: "postgres",
     password: "postgres",
     database: "node_crud",
-    entities: [Category],
+    entities: [Category, Video],
     migrations: ["src/database/migrations/*.ts"],
     logging: true,
     synchronize: true,
