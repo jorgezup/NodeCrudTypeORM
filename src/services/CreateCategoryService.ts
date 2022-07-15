@@ -10,11 +10,11 @@ export class CreateCategoryService {
     async execute({
         name,
         description,
-    }: CategoryRequest): Promise<Category> {
+    }: CategoryRequest): Promise<Category | Error> {
         const categoryRepository = dataSource.getRepository(Category);
 
         if (await categoryRepository.findOneBy({ name })) {
-            throw new Error("Category already exists");
+            return new Error("Category already exists");
         }
 
         const category = categoryRepository.create({
