@@ -1,10 +1,10 @@
-import {Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn} from "typeorm";
-import { v4 as uuidv4 } from "uuid";
-import {Category} from "./Category";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
+import { Category } from './Category';
 
-@Entity("videos")
+@Entity('videos')
 export class Video {
-    @PrimaryColumn("uuid")
+    @PrimaryColumn('uuid')
     id: string;
 
     @Column()
@@ -16,18 +16,18 @@ export class Video {
     @Column()
     duration: number;
 
-    @Column()  //para relacionar videos com categorias
-    category_id: string;
+    @Column() // para relacionar videos com categorias
+    categoryId: string;
 
     @ManyToOne(() => Category)
-    @JoinColumn({name: "category_id"})
+    @JoinColumn({ name: 'category_id' })
     category: Category;
 
     @CreateDateColumn()
     createdAt: Date;
 
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuidv4();
         }
     }

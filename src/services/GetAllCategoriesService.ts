@@ -1,5 +1,5 @@
-import dataSource from "../database/dataSource";
-import {Category} from "../entities/Category";
+import dataSource from '../database/dataSource';
+import { Category } from '../entities/Category';
 
 export class GetAllCategoriesService {
     async execute(): Promise<Category[]> {

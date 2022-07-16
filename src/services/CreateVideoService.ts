@@ -1,11 +1,11 @@
-import dataSource from "../database/dataSource";
-import {Video} from "../entities/Video";
+import dataSource from '../database/dataSource';
+import { Video } from '../entities/Video';
 
 type CreateVideoRequest = {
     name: string;
     description: string;
     duration: number;
-    category_id: string;
+    categoryId: string;
 }
 
 export class CreateVideoService {
@@ -13,20 +13,20 @@ export class CreateVideoService {
         name,
         description,
         duration,
-        category_id,
+        categoryId,
     }: CreateVideoRequest): Promise<Video | Error> {
         const videoRepository = dataSource.getRepository(Video);
 
         if (await videoRepository.findOneBy({ name })) {
-            return new Error("Video already exists");
+            return new Error('Video already exists');
         }
 
         const video = videoRepository.create({
             name,
             description,
             duration,
-            category_id,
-        })
+            categoryId,
+        });
 
         await videoRepository.save(video);
 

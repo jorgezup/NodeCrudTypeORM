@@ -1,10 +1,10 @@
-import {Router} from 'express';
-import {CreateCategoryController} from "./controllers/CreateCategoryController";
-import {GetAllCategoriesController} from "./controllers/GetAllCategoriesController";
-import {DeleteCategoryController} from "./controllers/DeleteCategoryController";
-import {UpdateCategoryController} from "./controllers/UpdateCategoryController";
-import {CreateVideoController} from "./controllers/CreateVideoController";
-import {GetAllVideosController} from "./controllers/GetAllVideosController";
+import { Router } from 'express';
+import { CreateCategoryController } from './controllers/CreateCategoryController';
+import { GetAllCategoriesController } from './controllers/GetAllCategoriesController';
+import { DeleteCategoryController } from './controllers/DeleteCategoryController';
+import { UpdateCategoryController } from './controllers/UpdateCategoryController';
+import { CreateVideoController } from './controllers/CreateVideoController';
+import { GetAllVideosController } from './controllers/GetAllVideosController';
 
 const routes = Router();
 
@@ -16,4 +16,4 @@ routes.put('/categories/:id', new UpdateCategoryController().handle);
 routes.post('/videos', new CreateVideoController().handle);
 routes.get('/videos', new GetAllVideosController().handle);
 
-export {routes};
+export { routes };

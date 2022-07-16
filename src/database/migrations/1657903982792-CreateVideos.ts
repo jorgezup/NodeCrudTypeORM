@@ -1,54 +1,54 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm"
+/* eslint-disable max-lines-per-function */
+/* eslint-disable class-methods-use-this */
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateVideos1657903982792 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "videos",
+                name: 'videos',
                 columns: [
                     {
-                        name: "id",
-                        type: "uuid",
+                        name: 'id',
+                        type: 'uuid',
                         isPrimary: true,
                     },
                     {
-                        name: "name",
-                        type: "varchar",
+                        name: 'name',
+                        type: 'varchar',
                         isUnique: true,
                     },
                     {
-                        name: "description",
-                        type: "varchar",
+                        name: 'description',
+                        type: 'varchar',
                     },
                     {
-                        name: "category_id",
-                        type: "uuid",
+                        name: 'category_id',
+                        type: 'uuid',
                     },
                     {
-                        name: "duration",
-                        type: "numeric",
+                        name: 'duration',
+                        type: 'numeric',
                     },
                     {
-                        name: "created_at",
-                        type: "timestamp",
-                        default: "now()",
-                    }
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()',
+                    },
                 ],
                 foreignKeys: [
                     {
-                        name: "fk_videos_category",
-                        columnNames: ["category_id"],
-                        referencedTableName: "categories",
-                        referencedColumnNames: ["id"],
-                    }
-                ]
-            })
-        )
+                        name: 'fk_videos_category',
+                        columnNames: ['category_id'],
+                        referencedTableName: 'categories',
+                        referencedColumnNames: ['id'],
+                    },
+                ],
+            }),
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("videos")
+        await queryRunner.dropTable('videos');
     }
-
 }

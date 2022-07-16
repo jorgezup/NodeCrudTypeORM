@@ -1,12 +1,12 @@
-import {Video} from "../entities/Video";
-import dataSource from "../database/dataSource";
+import { Video } from '../entities/Video';
+import dataSource from '../database/dataSource';
 
 export class GetAllVideosService {
     async execute() {
-        const videoRepository = dataSource.getRepository(Video)
+        const videoRepository = dataSource.getRepository(Video);
 
         return videoRepository.find({
-            relations: ["category"],
-        })
+            relations: ['category'],
+        });
     }
 }

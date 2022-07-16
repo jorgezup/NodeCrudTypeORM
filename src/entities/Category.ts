@@ -1,9 +1,9 @@
-import {Entity, Column, CreateDateColumn, PrimaryColumn } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
+import { Entity, Column, CreateDateColumn, PrimaryColumn } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 
-@Entity("categories")
+@Entity('categories')
 export class Category {
-    @PrimaryColumn("uuid")
+    @PrimaryColumn('uuid')
     id: string;
 
     @Column()
@@ -16,7 +16,7 @@ export class Category {
     createdAt: Date;
 
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuidv4();
         }
     }

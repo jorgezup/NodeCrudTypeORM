@@ -1,5 +1,5 @@
-import {Category} from "../entities/Category";
-import dataSource from "../database/dataSource";
+import { Category } from '../entities/Category';
+import dataSource from '../database/dataSource';
 
 type CategoryRequest = {
     name: string;
@@ -14,13 +14,13 @@ export class CreateCategoryService {
         const categoryRepository = dataSource.getRepository(Category);
 
         if (await categoryRepository.findOneBy({ name })) {
-            return new Error("Category already exists");
+            return new Error('Category already exists');
         }
 
         const category = categoryRepository.create({
             name,
             description,
-        })
+        });
 
         await categoryRepository.save(category);
 
